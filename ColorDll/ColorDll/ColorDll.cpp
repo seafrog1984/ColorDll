@@ -109,10 +109,10 @@ COLORDLL_API void CalRGB(Mat &img, int &sx, int &sy, int &w, int &h, int &r, int
 
 	Mat channel[3];
 	split(roi, channel);
-	imshow("original", img);
-	imshow("B", channel[0]);
-	imshow("G", channel[1]);
-	imshow("R", channel[2]);
+	//imshow("original", img);
+	//imshow("B", channel[0]);
+	//imshow("G", channel[1]);
+	//imshow("R", channel[2]);
 
 	cv::Scalar tempVal;
 	int bgr[3];
@@ -133,15 +133,15 @@ COLORDLL_API void CalRGB(Mat &img, int &sx, int &sy, int &w, int &h, int &r, int
 COLORDLL_API int CompareRGB(int &r, int &g, int &b, int dst_r, int dst_g, int dst_b, int thre)
 {
 
-	if (r - dst_r > thre)
+	if (r - dst_r > thre || r - dst_r < -thre)
 	{
 		return 1;
 	}
-	if (g - dst_g > thre)
+	if (g - dst_g > thre || g - dst_g < -thre)
 	{
 		return 2;
 	}
-	if (b - dst_b > thre)
+	if (b - dst_b > thre || b - dst_b < -thre)
 	{
 		return 3;
 	}
